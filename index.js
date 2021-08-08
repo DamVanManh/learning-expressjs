@@ -10,8 +10,8 @@ mongoose
   .then(() => {
     console.log("connected to DB");
 
-    app.listen(port, function () {
-      console.log("server listening on port 3000 " + port);
+    app.listen(process.env.PORT || 3000, function () {
+      console.log("server listening on port 3000 " + process.env.PORT || 3000);
     });
   })
   .catch((err) => {
