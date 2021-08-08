@@ -1,0 +1,6 @@
+/* custom css */
+.product {
+  display: grid;
+  grid-gap: 36px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 4fr));
+}

@@ -1,0 +1,23 @@
+
+- let amount = amountProduct ?? 0
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  .container-fluid
+    a.navbar-brand(href='#') CoderX
+    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNav')
+      span.navbar-toggler-icon
+    #navbarNav.collapse.navbar-collapse
+      ul.navbar-nav
+        li.nav-item
+          a.nav-link.active(aria-current='page' href='/') Home
+        li.nav-item
+          a.nav-link(href='/users/create') Create User
+        li.nav-item
+          a.nav-link(href='/users') User list
+        li.nav-item
+          a.nav-link(href='/products') Products
+        li.nav-item
+          a.nav-link(href='#')= 'Cart(' + amount + ')'
+        li.nav-item
+          a.nav-link(href='/transfer/create') Transfer
+    if user
+      p= user.name
