@@ -1,10 +1,24 @@
 require("dotenv").config();
 var express = require("express");
-const mongoose = require("mongoose");
-mongoose.connect(process.env.MONGO_URL); // lưu biến môi trường trong .env
-var cookieParser = require("cookie-parser");
-var port = 3000;
 var app = express();
+const mongoose = require("mongoose");
+var port = process.env.PORT || 3000;
+const URI =
+  "mongodb+srv://admin:<password>@cluster0.lffpb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+mongoose
+  .connect(URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log("connected to DB");
+
+    app.listen(port, function () {
+      console.log("server listening on port 3000 " + port);
+    });
+  })
+  .catch((err) => {
+    console.log("err", err);
+  });
+
+var cookieParser = require("cookie-parser");
 
 var userRoutes = require("./routes/user.route");
 var authRoute = require("./routes/auth.route");
@@ -38,8 +52,3 @@ app.get("/", function (req, res) {
 });
 
 app.use("/api", apiProductRoute);
-
-// khi server start thì chạy callback
-app.listen(port, function () {
-  console.log("server listening on port 3000 " + port);
-});
