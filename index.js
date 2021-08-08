@@ -4,14 +4,14 @@ var app = express();
 const mongoose = require("mongoose");
 var port = process.env.PORT || 3000;
 const URI =
-  "mongodb+srv://admin:<password>@cluster0.lffpb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+  "mongodb+srv://admin:LI5UIPJZME7i9EqR@cluster0.lffpb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 mongoose
   .connect(URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("connected to DB");
 
-    app.listen(process.env.PORT || 3000, function () {
-      console.log("server listening on port 3000 " + process.env.PORT || 3000);
+    app.listen(port || 3000, function () {
+      console.log("server listening on port 3000 " + port);
     });
   })
   .catch((err) => {
